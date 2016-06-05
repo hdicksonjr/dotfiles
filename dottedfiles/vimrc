@@ -1,0 +1,188 @@
+" set nocompatible
+
+" vundle requires this to be off initially
+filetype off
+
+" enable 256 color palette
+set t_Co=256
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+" all plugins here"
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'fatih/vim-go'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'danro/rename.vim'
+Plugin 'slim-template/vim-slim'
+Plugin 'sjl/gundo.vim'
+Plugin 'rking/ag.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'jelera/vim-javascript-syntax'
+" dependency for vim-snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+" dependency for vim-snipmate
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+
+call vundle#end()
+" filetype plugin indent on
+
+" enable syntax highlighting
+syntax on
+
+filetype plugin on
+
+" select tabs and highglight them
+syntax match Tab /\t/
+hi Tab gui=underline guifg=blue ctermbg=blue
+
+set hidden
+set textwidth=79
+set foldlevel=99
+" set formatoptions+=t
+
+let mapleader=","
+
+" allow expanded tree view to be shown in editor mode
+let g:netrw_liststyle=3
+
+lef g:UltiSnipsSnippetsDir='~/.vim/ultisnips'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="horizontal"
+
+
+" convenient mappings to be able to edit and reload the vimrc
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>tv :so $MYVIMRC<CR>
+
+set nowrap
+set backspace=indent,eol,start
+" set copyindent
+set number
+set listchars=tab:\ \ ,eol:$
+" show matching brackets when indicator is over them
+set showmatch
+" use cases intelligently when searching
+set smartcase
+" highlight search results
+set hlsearch
+" make search act as it does in browsers
+set incsearch
+set cursorline " underline current line
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set history=1000
+set undolevels=1000
+set title
+set visualbell
+set noerrorbells
+set nobackup
+set noswapfile
+set list
+set wildmenu            " visual autocomplete for command menu
+set relativenumber
+set autoindent
+set smartindent
+set clipboard=unnamed
+
+set mouse=a
+
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+
+" make editor mode more accessible
+map <leader>k :E<cr> 
+" this will open editor mode in a new tab
+map <leader>kt :Texplore<cr> 
+
+map <leader>q :.w !pbcopy<CR><CR>
+
+" visual mode mapping to copy selection to clipboard
+" for reference: http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
+" Since this is a little bit over my head
+vnoremap <silent> <leader>wq :<CR>:let @a=@" \| execute "normal! vgvy" \| let res=system("pbcopy", @") \| let @"=@a<CR>
+
+
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+map <c-q> <c-w> <c-w>
+
+" unhighlight search results from mapping
+nnoremap <leader><space> :nohlsearch<CR> 
+
+" mapping for gundo plugin
+" nnoremap <leader>q :GundoToggle<CR>
+
+" basic controler for ag.vim
+nnoremap <leader>a :Ag!<space>
+" ag always search from project root
+
+
+" SPLIT RESIZE COMMANDS
+" Both of the below commands need to be followed 
+" by a +/- and number to resize.
+" 5 is a good number for incremental changes. 
+" 30 is better for larger changes
+" very quick vertical split reszing
+nnoremap <leader>v :res<space>
+
+
+" very quick horizontal split reszing
+" I know this seems backwards to have the 
+" horizontal command use the vertical resize command
+" this adjusts the width of the split, which I consider
+" horizontal resizing.
+nnoremap <leader>h :vertical resize<space>
+
+" open new file prefaced with path to current
+map ,n :new <C-R>=expand("%:p:h") . "/" <CR>
+" in a tab
+map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
+" in a split
+map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
+
+" currently disabled. set to 'r' to set ctrlp base to nearest .git
+let g:ag_working_path_mode="0"
+
+:imap jk <Esc>
+:imap ccl console.log()
+:imap miQ @media(min-width: ) { <S-CR><ESC>k6wi
+:imap maQ @media(max-width: ) { <S-CR><ESC>k6wi
+
+
+
+
+" map shift + enter to place end 2 lines down and cursor on next line
+if !exists( "*EndToken" )
+  function EndToken()
+    let current_line = getline( '.' )
+    let braces_at_end = '{\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
+    if match( current_line, braces_at_end ) >= 0
+      return '}'
+    else
+      return 'end'
+    endif
+  endfunction
+endif
+
+colorscheme monokai

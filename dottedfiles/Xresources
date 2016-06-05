@@ -1,0 +1,32 @@
+! lumberjack theme
+xvt*color0: #1a1a1a
+URxvt*color8: #212121
+
+URxvt*color1: #bd2a2a
+URxvt*color9: #c76440
+
+URxvt*color2: #5d875d
+URxvt*color10: #9acd32
+
+URxvt*color3: #947463
+URxvt*color11: #f0e95d
+
+URxvt*color4: #9bcbeb
+URxvt*color12: #858585
+
+URxvt*color5: #b56124
+URxvt*color13: #303030
+
+URxvt*color6: #2e2e2e
+URxvt*color14: #757475
+
+URxvt*color7: #fffefc
+URxvt*color15: #ffffff
+
+URxvt*background: #1a1a1a
+URxvt*foreground: #858585
+
+URxvt*cursorColor: #9bcbeb
+
+URxvt*highlightColor: #9acd32
+URxvt*highlightTextColor: #fffefc

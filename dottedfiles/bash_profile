@@ -1,0 +1,21 @@
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH/usr/local/bin
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+eval "$(rbenv init -)"
+
+alias gogo='cd $GOPATH/src/github.com/hdicksonjr'
+alias cdh='cd ~/'
+alias sd='cd ~/sites/'
+alias gp='git pull'
+alias gsp='git stash&&git pull'
+alias gb='git branch'
+alias gco='git checkout'
+alias gc='git commit'
+alias gca='git commit -a'
+
+
+export PS1="\[\033[1;34m\]\! \[\033[0m\]\[\033[1;35m\]\u\[\033[0m\]:\[\033[1;35m\]\W\[\033[0m\]$ "
