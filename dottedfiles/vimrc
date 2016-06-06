@@ -1,4 +1,4 @@
-" set nocompatible
+set nocompatible
 
 " vundle requires this to be off initially
 filetype off
@@ -55,12 +55,6 @@ let mapleader=","
 " allow expanded tree view to be shown in editor mode
 let g:netrw_liststyle=3
 
-lef g:UltiSnipsSnippetsDir='~/.vim/ultisnips'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="horizontal"
-
 
 " convenient mappings to be able to edit and reload the vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -111,12 +105,6 @@ map <leader>k :E<cr>
 map <leader>kt :Texplore<cr> 
 
 map <leader>q :.w !pbcopy<CR><CR>
-
-" visual mode mapping to copy selection to clipboard
-" for reference: http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-" Since this is a little bit over my head
-vnoremap <silent> <leader>wq :<CR>:let @a=@" \| execute "normal! vgvy" \| let res=system("pbcopy", @") \| let @"=@a<CR>
-
 
 
 " Easy window navigation

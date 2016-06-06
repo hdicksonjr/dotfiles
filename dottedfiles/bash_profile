@@ -1,21 +1,37 @@
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH/usr/local/bin
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PS1="\[\033[1;34m\]\! \[\033[0m\]\[\033[1;35m\]\u\[\033[0m\]:\[\033[1;35m\]\W\[\033[0m\]$ "
 
-eval "$(rbenv init -)"
+export SSL_CERT_FILE=/Users/hdicks001c/.certs/cacert.pem
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+gco_theirs() {
+  git checkout --theirs -- $1
+}
+
+gco_ours() {
+  git checkout --ours -- $1
+}
+
+ga() {
+  git add $1
+}
+
+alias scuts='cat ~/.bash_profile'
+alias unvim='mv ~/.vimrc ~/vimrc'
+alias revim='mv ~/vimrc ~/.vimrc'
 alias gogo='cd $GOPATH/src/github.com/hdicksonjr'
 alias cdh='cd ~/'
 alias sd='cd ~/sites/'
+alias sic='cd ~/sites/TeamCharlie/si-components'
+alias gd='git diff'
 alias gp='git pull'
+alias grase='git rebase'
 alias gsp='git stash&&git pull'
 alias gb='git branch'
 alias gco='git checkout'
-alias gc='git commit'
-alias gca='git commit -a'
-
-
-export PS1="\[\033[1;34m\]\! \[\033[0m\]\[\033[1;35m\]\u\[\033[0m\]:\[\033[1;35m\]\W\[\033[0m\]$ "
+alias gf='git fetch'
+alias gca='git commit --amend'
+alias gstat='git status'
+alias gerpsh='git push origin HEAD:refs/for/master'

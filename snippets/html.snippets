@@ -1,13 +1,35 @@
 # custom element
 snippet el
 	<${1:el_name}>${0}</$1>
+# custom element with metadata
+snippet elm
+	<${1:el_name} ${2}>${0}</$1>
 # element with a line break
 snippet elb
 	<${1:el_name}>
 	  ${0}
 	</$1>
 # element with metadata (classes, id's attr's, etc...)
-snippet elm
-	<$1 ${2}>
+snippet elbm
+	<${1:el_name} ${2}>
 	  ${0}
 	</$1>
+# TESTING
+
+snippet test
+	test('${1}', function (${2}) {
+	   ${0}
+	});
+snippet suit
+	suite('${1}', function(${2}) {
+	  ${0}
+	});
+snippet sinsp
+	sinon.spy(${1}, '${2}');
+snippet asst
+	assert.isTrue(${1}, '${2}');
+snippet asse
+	assert.equal(${1}, ${2}, '${3}');
+snippet ass
+	assert(${1}, '${2}');
+
