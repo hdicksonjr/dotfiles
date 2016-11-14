@@ -19,6 +19,19 @@ ga() {
   git add $1
 }
 
+gerpshFeature() {
+  git push origin HEAD:refs/for/feature/$1
+}
+
+togVim() {
+  if [ -f ~/.vimrc ];
+  then
+    mv ~/.vimrc ~/vimrc
+  else
+    mv ~/vimrc ~/.vimrc
+  fi
+}
+
 alias scuts='cat ~/.bash_profile'
 alias unvim='mv ~/.vimrc ~/vimrc'
 alias revim='mv ~/vimrc ~/.vimrc'
@@ -27,6 +40,8 @@ alias cdh='cd ~/'
 alias sd='cd ~/sites/'
 alias sic='cd ~/sites/TeamCharlie/si-components'
 alias gd='git diff'
+alias gdc='git diff --cached'
+alias gds='git diff --stat'
 alias gp='git pull'
 alias grase='git rebase'
 alias gsp='git stash&&git pull'
@@ -36,3 +51,10 @@ alias gf='git fetch'
 alias gca='git commit --amend'
 alias gstat='git status'
 alias gerpsh='git push origin HEAD:refs/for/master'
+alias ghreset='git reset  --hard origin/master'
+
+# completely replace local branch with master.
+alias gtotalreplace='git fetch origin && git reset --hard origin/master'
+
+export NVM_DIR="/Users/hdicks001c/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

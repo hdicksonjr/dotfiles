@@ -25,12 +25,14 @@ Plugin 'sjl/gundo.vim'
 Plugin 'rking/ag.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'bling/vim-airline'
 " dependency for vim-snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
 " dependency for vim-snipmate
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'airblade/vim-gitgutter'
 
 
 call vundle#end()
@@ -50,6 +52,17 @@ set textwidth=79
 set foldlevel=99
 " set formatoptions+=t
 
+" function to trim whitespace
+fun! TrimWhitespace()
+    let l:save_cursor = getpos('.')
+    %s/\s\+$//e
+    call setpos('.', l:save_cursor)
+endfun
+"create a command to call trim whitespace
+command! TrimWhitespace call TrimWhitespace()
+" call the command whenever file is saved
+autocmd BufWritePre * :call TrimWhitespace()
+
 let mapleader=","
 
 " allow expanded tree view to be shown in editor mode
@@ -59,7 +72,8 @@ let g:netrw_liststyle=3
 " convenient mappings to be able to edit and reload the vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>tv :so $MYVIMRC<CR>
-
+" recommended for use with gitgutter.
+set updatetime=250
 set nowrap
 set backspace=indent,eol,start
 " set copyindent
@@ -100,9 +114,9 @@ map <right> <nop>
 
 
 " make editor mode more accessible
-map <leader>k :E<cr> 
+map <leader>k :E<cr>
 " this will open editor mode in a new tab
-map <leader>kt :Texplore<cr> 
+map <leader>kt :Texplore<cr>
 
 map <leader>q :.w !pbcopy<CR><CR>
 
@@ -115,8 +129,12 @@ map <C-l> <C-w>l
 
 map <c-q> <c-w> <c-w>
 
+" tab navigation
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+
 " unhighlight search results from mapping
-nnoremap <leader><space> :nohlsearch<CR> 
+nnoremap <leader><space> :nohlsearch<CR>
 
 " mapping for gundo plugin
 " nnoremap <leader>q :GundoToggle<CR>
@@ -127,16 +145,16 @@ nnoremap <leader>a :Ag!<space>
 
 
 " SPLIT RESIZE COMMANDS
-" Both of the below commands need to be followed 
+" Both of the below commands need to be followed
 " by a +/- and number to resize.
-" 5 is a good number for incremental changes. 
+" 5 is a good number for incremental changes.
 " 30 is better for larger changes
 " very quick vertical split reszing
 nnoremap <leader>v :res<space>
 
 
 " very quick horizontal split reszing
-" I know this seems backwards to have the 
+" I know this seems backwards to have the
 " horizontal command use the vertical resize command
 " this adjusts the width of the split, which I consider
 " horizontal resizing.
