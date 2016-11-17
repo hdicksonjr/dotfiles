@@ -8,7 +8,7 @@
 dotfiles_dir=~/dotfiles/dottedfiles  # Directory for dotfiles
 olddir=~/former_dotfiles # If there are old dotfiles when this script is run, move
 # them here
-files="bashrc bash_profile vimrc Xresources" # list of files to symlink in homedir.
+files="bashrc bash_profile vimrc minvimrc Xresources" # list of files to symlink in homedir.
 
 echo "making old dir"
 mkdir -p $olddir

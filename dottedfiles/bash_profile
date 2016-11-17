@@ -3,10 +3,6 @@
 
 export PS1="\[\033[1;34m\]\! \[\033[0m\]\[\033[1;35m\]\u\[\033[0m\]:\[\033[1;35m\]\W\[\033[0m\]$ "
 
-export SSL_CERT_FILE=/Users/hdicks001c/.certs/cacert.pem
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 gco_theirs() {
   git checkout --theirs -- $1
 }
@@ -30,6 +26,10 @@ togVim() {
   else
     mv ~/vimrc ~/.vimrc
   fi
+}
+
+minvim() {
+  vim -u ~/.minvimrc $1
 }
 
 alias scuts='cat ~/.bash_profile'

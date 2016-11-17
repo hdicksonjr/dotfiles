@@ -1,0 +1,64 @@
+set nocompatible
+
+" vundle requires this to be off initially
+filetype off
+
+" enable 256 color palette
+set t_Co=256
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+" all plugins here"
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'danro/rename.vim'
+Plugin 'rking/ag.vim'
+Plugin 'bling/vim-airline'
+" dependency for vim-snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+" dependency for vim-snipmate
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'junegunn/goyo.vim'
+Plugin 'plasticboy/vim-markdown'
+
+
+call vundle#end()
+" filetype plugin indent on
+
+" enable syntax highlighting
+syntax on
+
+filetype plugin on
+
+colorscheme monokai
+
+call s:goyo_on()
+
+
+" finds tabs and highglight them
+syntax match Tab /\t/
+hi Tab gui=underline guifg=blue ctermbg=blue
+
+let mapleader=","
+
+" recommended for use with gitgutter.
+set updatetime=250
+
+" highlight search results
+set hlsearch
+
+set noswapfile
+set relativenumber
+set autoindent
+set smartindent
+set clipboard=unnamed
+:imap jk <esc>
+
+

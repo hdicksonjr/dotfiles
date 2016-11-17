@@ -171,7 +171,6 @@ map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
 let g:ag_working_path_mode="0"
 
 :imap jk <Esc>
-:imap ccl console.log()
 :imap miQ @media(min-width: ) { <S-CR><ESC>k6wi
 :imap maQ @media(max-width: ) { <S-CR><ESC>k6wi
 
