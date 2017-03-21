@@ -12,7 +12,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " all plugins here"
-Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
@@ -43,6 +44,8 @@ syntax on
 
 filetype plugin on
 
+nnoremap <C-p> :Unite file_rec/async<cr>
+
 " select tabs and highglight them
 syntax match Tab /\t/
 hi Tab gui=underline guifg=blue ctermbg=blue
@@ -68,6 +71,9 @@ let mapleader=","
 " allow expanded tree view to be shown in editor mode
 let g:netrw_liststyle=3
 
+" size of fuzzy search pane for fzf
+let g:fzf_layout = { 'down': '~20%' }
+nnoremap <c-p> :FZF<cr>
 
 " convenient mappings to be able to edit and reload the vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -114,7 +120,7 @@ map <right> <nop>
 
 
 " make editor mode more accessible
-map <leader>k :E<cr>
+map <leader>k :Explore<cr>
 " this will open editor mode in a new tab
 map <leader>kt :Texplore<cr>
 
@@ -171,11 +177,6 @@ map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
 let g:ag_working_path_mode="0"
 
 :imap jk <Esc>
-:imap miQ @media(min-width: ) { <S-CR><ESC>k6wi
-:imap maQ @media(max-width: ) { <S-CR><ESC>k6wi
-
-
-
 
 " map shift + enter to place end 2 lines down and cursor on next line
 if !exists( "*EndToken" )
