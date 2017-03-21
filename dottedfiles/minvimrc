@@ -39,9 +39,6 @@ filetype plugin on
 
 colorscheme monokai
 
-call s:goyo_on()
-
-
 " finds tabs and highglight them
 syntax match Tab /\t/
 hi Tab gui=underline guifg=blue ctermbg=blue
@@ -60,5 +57,11 @@ set autoindent
 set smartindent
 set clipboard=unnamed
 :imap jk <esc>
+
+set foldlevelstart=99
+set foldlevel=99
+
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_new_list_item_indent = 2
 
 
