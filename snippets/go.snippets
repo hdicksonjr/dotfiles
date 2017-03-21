@@ -1,0 +1,28 @@
+# shorthand variable declaration
+snippet va
+	${1:var} := ${0:value}
+# generic error block
+snippet errbl
+	if err != nil {
+		log.Fatal(err)
+	}
+
+snippet func
+	func ${1:funcName}(${2:dec}) ${3:sig} {
+	       ${0}
+	}
+
+# basic print
+snippet pr
+	fmt.Printf("%v\n", ${0})
+
+snippet prl
+	fmt.Println("i${0}")
+
+snippet test
+	func ${1}(t *testing.T) {
+	        ${0}
+		if {$2} != () {
+			t.Error("", )
+		}
+	}
