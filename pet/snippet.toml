@@ -1,0 +1,119 @@
+[[snippets]]
+  description = "remove cached file from remote"
+  command = "git rm --cached <file>"
+  output = ""
+
+[[snippets]]
+  description = "Sets default node version in NVM."
+  command = "nvm alias default <version=7.3.0>"
+  output = ""
+
+[[snippets]]
+  description = "unstage a file while retaining the changes in working directory"
+  command = "git reset <file>"
+  output = ""
+
+[[snippets]]
+  description = "diff of what is staged but not yet committed"
+  command = "git diff --staged"
+  output = ""
+
+[[snippets]]
+  description = "create a new branch of branch-name at the current commit"
+  command = "git branch <branch-name>"
+  output = ""
+
+[[snippets]]
+  description = "merge the specified branch's history into the current one."
+  command = "git merge <branch>"
+  output = ""
+
+[[snippets]]
+  description = "show the commits on branchA that are not on branchB"
+  command = "git log <branchB>..<branchA"
+  output = ""
+
+[[snippets]]
+  description = "show the commits that changed file, even across renames."
+  command = "git log --follow <file>"
+  output = ""
+
+[[snippets]]
+  description = "show the diff of what is in branchA that is not in branchB"
+  command = "git diff <branchB>..<branchA>"
+  output = ""
+
+[[snippets]]
+  description = "add a remote at the git url as an alias."
+  command = "git remote add <alias> <url>"
+  output = ""
+
+[[snippets]]
+  description = "fetch down all branches from git remote corresponding to alias."
+  command = "git fetch <alias>"
+  output = ""
+
+[[snippets]]
+  description = "merge remote branch at remote corresponding to alias into your current branch."
+  command = "git merge <alias>/<branch>"
+  output = ""
+
+[[snippets]]
+  description = "Transmit local branch commits to branch at remote corresponding to alias."
+  command = "git push <alias> <branch>"
+  output = ""
+
+[[snippets]]
+  description = "fetch and merge any commits from the tracking remote branch."
+  command = "git pull"
+  output = ""
+
+[[snippets]]
+  description = "delete the file from the project and stage the removal for commit."
+  command = "git rm <file>"
+  output = ""
+
+[[snippets]]
+  description = "change an existing file path and stage the move."
+  command = "git mv <existing-path> <new-path>"
+  output = ""
+
+[[snippets]]
+  description = "apply any commits of current branch ahead of specified branch."
+  command = "git rebase <branch>"
+  output = ""
+
+[[snippets]]
+  description = "clear staging area, rewrite working tree from specified commit"
+  command = "git reset --hard <commit>"
+  output = ""
+
+[[snippets]]
+  description = "Dump homebrew installed packages into a brewfile"
+  command = "brew bundle dump -v --file=\"<file-to-write-to=~/dotfiles/Brewfile>\""
+  output = ""
+
+[[snippets]]
+  description = "search for file starting in current directory"
+  command = "find . -name \"<file>\""
+  output = ""
+
+[[snippets]]
+  description = "basic search with the_silver_searcher. Just saving because sometimes I forget what the alias is."
+  command = "ag <file>"
+  output = ""
+
+[[snippets]]
+  description = "search and add context (2 lines on either side) in result."
+  command = "ag --context <query>"
+  output = ""
+
+[[snippets]]
+  description = "search up to num files deep in a query."
+  command = "ag --depth <num> <query>"
+  output = ""
+
+[[snippets]]
+  description = "search in specific file type only."
+  command = "ag --<file-type> <query>"
+  output = ""

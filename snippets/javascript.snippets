@@ -41,3 +41,13 @@ snippet clv
 # debugger
 snippet db
 	debugger;
+snippet describe6
+	describe('${1}', () => {
+	  beforeEach(() => {
+	  });
+	  it('', () => {
+	    ${0}
+	    expect().to.be.true;
+	  });
+	});
+
