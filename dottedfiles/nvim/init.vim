@@ -1,0 +1,193 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'fatih/vim-go'
+Plug 'kchmck/vim-coffee-script'
+Plug 'digitaltoad/vim-jade'
+Plug 'danro/rename.vim'
+Plug 'slim-template/vim-slim'
+Plug 'sjl/gundo.vim'
+Plug 'rking/ag.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'pangloss/vim-javascript'
+Plug 'bling/vim-airline'
+" dependency for vim-snipmate
+Plug 'MarcWeber/vim-addon-mw-utils'
+" dependency for vim-snipmate
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'airblade/vim-gitgutter'
+Plug 'rakr/vim-one'
+
+call plug#end()
+filetype plugin indent on
+
+set nocompatible
+colorscheme one
+set background=dark
+set termguicolors
+" vundle requires this to be off initially
+filetype off
+
+" enable 256 color palette
+set t_Co=256
+
+" enable syntax highlighting
+syntax on
+
+filetype plugin on
+
+nnoremap <C-p> :Unite file_rec/async<cr>
+
+" select tabs and highglight them
+syntax match Tab /\t/
+hi Tab gui=underline guifg=blue ctermbg=blue
+
+set hidden
+set textwidth=79
+set foldlevel=99
+" set formatoptions+=t
+
+" function to trim whitespace
+fun! TrimWhitespace()
+    let l:save_cursor = getpos('.')
+    %s/\s\+$//e
+    call setpos('.', l:save_cursor)
+endfun
+"create a command to call trim whitespace
+command! TrimWhitespace call TrimWhitespace()
+" call the command whenever file is saved
+autocmd BufWritePre * :call TrimWhitespace()
+
+let mapleader=","
+
+" allow expanded tree view to be shown in editor mode
+let g:netrw_liststyle=3
+
+" size of fuzzy search pane for fzf
+let g:fzf_layout = { 'down': '~20%' }
+nnoremap <c-p> :FZF<cr>
+
+" convenient mappings to be able to edit and reload the vimrc
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>tv :so $MYVIMRC<CR>
+" recommended for use with gitgutter.
+set updatetime=250
+set nowrap
+set backspace=indent,eol,start
+" set copyindent
+set number
+set listchars=tab:\ \ ,eol:$
+" show matching brackets when indicator is over them
+set showmatch
+" use cases intelligently when searching
+set smartcase
+" highlight search results
+set hlsearch
+" make search act as it does in browsers
+set incsearch
+set cursorline " underline current line
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set history=1000
+set undolevels=1000
+set title
+set visualbell
+set noerrorbells
+set nobackup
+set noswapfile
+set list
+set wildmenu            " visual autocomplete for command menu
+set relativenumber
+set autoindent
+set smartindent
+set clipboard=unnamed
+
+set mouse=a
+
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+
+" make editor mode more accessible
+map <leader>k :Explore<cr>
+" this will open editor mode in a new tab
+map <leader>kt :Texplore<cr>
+
+map <leader>q :.w !pbcopy<CR><CR>
+
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+map <c-q> <c-w> <c-w>
+
+" tab navigation
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+
+" unhighlight search results from mapping
+nnoremap <leader><space> :nohlsearch<CR>
+
+" mapping for gundo plugin
+" nnoremap <leader>q :GundoToggle<CR>
+
+" basic controler for ag.vim
+nnoremap <leader>a :Ag!<space>
+" ag always search from project root
+
+
+" SPLIT RESIZE COMMANDS
+" Both of the below commands need to be followed
+" by a +/- and number to resize.
+" 5 is a good number for incremental changes.
+" 30 is better for larger changes
+" very quick vertical split reszing
+nnoremap <leader>v :res<space>
+
+
+" very quick horizontal split reszing
+" I know this seems backwards to have the
+" horizontal command use the vertical resize command
+" this adjusts the width of the split, which I consider
+" horizontal resizing.
+nnoremap <leader>h :vertical resize<space>
+
+" open new file prefaced with path to current
+map ,n :new <C-R>=expand("%:p:h") . "/" <CR>
+" in a tab
+map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
+" in a split
+map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
+
+" currently disabled. set to 'r' to set ctrlp base to nearest .git
+let g:ag_working_path_mode="0"
+
+:imap jk <Esc>
+
+" map shift + enter to place end 2 lines down and cursor on next line
+if !exists( "*EndToken" )
+  function EndToken()
+    let current_line = getline( '.' )
+    let braces_at_end = '{\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
+    if match( current_line, braces_at_end ) >= 0
+      return '}'
+    else
+      return 'end'
+    endif
+  endfunction
+endif
+
+

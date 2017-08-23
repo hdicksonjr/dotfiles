@@ -25,6 +25,14 @@ for file in $files; do
 done
 
 #####
+# Neovim config
+#####
+echo "Creating symlink for nvim config"
+nvim_config_directory=~/.config/nvim
+mkdir -p $nvim_config_directory
+ln -s $dotfiles_dir/nvim/init.vim $nvim_config_directory/init.vim
+
+#####
 # Create symlinks for snippets
 #####
 snippetsdir=~/.vim/snippets
