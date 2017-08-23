@@ -34,6 +34,17 @@ minvim() {
   vim -u ~/.minvimrc $1
 }
 
+# Use pet to search snippets and output on the shell.
+function pet-select() {
+  BUFFER=$(pet search --query "$READLINE_LINE")
+  READLINE_LINE=$BUFFER
+  READLINE_POINT=${#BUFFER}
+}
+bind -x '"\C-x\C-r": pet-select'
+
+
+
+
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin
@@ -45,12 +56,15 @@ alias gogo='cd $GOPATH/src/github.com/hdicksonjr'
 alias cdh='cd ~/'
 alias sd='cd ~/sites/'
 alias sic='cd ~/sites/TeamCharlie/si-components'
-alias gd='git diff'
+# using the -w flag helps eliminate whitespace noise.
+alias gd='git diff -w'
+alias gdw='git diff --word-diff'
 alias gdc='git diff --cached'
 alias gds='git diff --stat'
 alias gp='git pull'
 alias grase='git rebase'
 alias gsp='git stash&&git pull'
+alias gsl='git stash list'
 alias gb='git branch'
 alias gco='git checkout'
 alias gf='git fetch'
@@ -58,6 +72,18 @@ alias gca='git commit --amend'
 alias gstat='git status'
 alias gerpsh='git push origin HEAD:refs/for/master'
 alias ghreset='git reset  --hard origin/master'
+# get ip
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+# Download file and save it with filename of remote file
+alias get="curl -O -L"
+
+# Show/hide hidden files in Finder
+alias showdotfiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Show/hide all desktop icons (useful when presenting)
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 
 # completely replace local branch with master.
 alias gtotalreplace='git fetch origin && git reset --hard origin/master'
